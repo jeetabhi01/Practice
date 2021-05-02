@@ -2,6 +2,7 @@
 using namespace std;
 template<typename T>
 class MapNode{
+    public:
     string key;
     T value;
     MapNode * next;
@@ -28,7 +29,7 @@ class Ourmap{
     int Getbucketindex(string key){
         int hashcode = 0;
         int currentcoeff = 1;
-        for(int i = key.length(); i > 0 ; i++){
+        for(int i = key.length(); i > 0 ; i--){
             hashcode+= key[i] * currentcoeff;
             hashcode = hashcode % numbuckets;
             currentcoeff = currentcoeff * 37;
@@ -36,9 +37,36 @@ class Ourmap{
             }
         return hashcode % numbuckets; 
     }
-    public:
+
+    void rehash(){
+        MapNode<T>** temp = buckets;
+        buckets = new MapNode<T>*[numbuckets*2];
+        for(int i = 0 ; i < numbuckets*2 ; i++){
+            buckets[i] = NULL;
+        }
+
+        int oldbucketcount = count;
+        numbuckets = numbuckets * 2;
+        count = 0  ;
+        for(int i = 0 ; i < oldbucketcount; i++){
+            MapNode<T> * head =temp[i];
+            while(head != NULL){
+                std::string key = head->key ;
+                T value = head->value;
+                insert(key, value);
+                head = head->next;
+            }
+        }
+           for(int i = 0 ; i < oldbucketcount ; i++){
+                MapNode<T>* head = temp[i];
+                delete head;
+            }
+            delete [] temp;
+            return;
+    }
+         public:
         Ourmap(){
-            size = 0 ;
+            count = 0 ;
             buckets = new MapNode<T>*[numbuckets];
             for(int i = 0 ; i < numbuckets; i++)
             buckets[i] = NULL;
@@ -67,7 +95,10 @@ class Ourmap{
         node->next = head;
         buckets[bucketindex] = node;
         count++;
-        return;
+        double loadfactor = 1.0 * count /numbuckets;
+        if(loadfactor > 0.7)
+            rehash();
+         return;
         }
 
         T remove(string key){
@@ -100,5 +131,9 @@ class Ourmap{
                 }
             }
             return 0;
+        }
+
+        double Getloadfactor(){
+            return 1.0* count/numbuckets;
         }
 };
