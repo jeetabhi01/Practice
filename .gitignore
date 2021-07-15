@@ -1,6 +1,7 @@
 "DSA Java"/
 .vscode/
-error.txt/
-.gitignore/
-output.txt/
-input.txt/
+error.txt
+.gitignore
+output.txt
+input.txt
+.token.txt
