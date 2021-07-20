@@ -28,7 +28,7 @@ inline double fast(double &m, int n)
   ans = fast(num, power);break;
    default :
    power=2;
-  ans = fast(num,power);
+   ans = fast(num,power);
    }
    display(ans);
    return 0;

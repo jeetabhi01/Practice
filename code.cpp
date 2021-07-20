@@ -1,6 +1,6 @@
 //Pragma Optimisations
 #pragma GCC optimise("Os")
-#pragma GCC optimise("O2")
+#pragma GCC optimise("O3")
 #pragma GCC optimise("unroll-loops")
 #pragma GCC target("avx2")
 #pragma GCC target("sse4")
@@ -93,8 +93,8 @@ signed main() {
 #endif
 	int t=1;
 	Solution ob;
-	cin>>t;
-	cin.get();
+	// cin>>t;
+	// cin.get();
 
 	while(t--)
 		ob.solve();
@@ -103,19 +103,10 @@ signed main() {
 }
 
 void Solution::solve() {
-	std::string s;
-	getline(cin,s);
-	// cout<<s<<endl;
-	char temp = 'a';
-
-	auto j  = s.rbegin();
-	for(int i =0 ; i < s.length(); i++, j++ , temp++) {
-		cout<<temp<<nl;
-		if(s[i] == temp || *j == temp) {
-			continue;
-		}
-		cout<<"NO"<<nl;
-		return;
-	}
-	cout<<"YES"<<nl;
+	int n;
+	cin>>n;
+	multiset<int> s;
+	for(int i = 0; i < n; i++)
+	
+	
 }

@@ -1,7 +1,7 @@
 #include<bits/stdc++.h>
 
 using namespace std;
-	
+khjhg	
 int32_t main(){
 	int n, clearbit;
 	cin>>n>>clearbit;
