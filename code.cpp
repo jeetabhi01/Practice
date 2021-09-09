@@ -23,6 +23,8 @@ using namespace std;
 #define inf				1e18
 #define setbits(x)		__builtin_popcountll(x)
 #define zerobits(x)		__builtin_ctzll(x)
+#define all(v)		v.begin(),v.end()
+
 template<typename T1,typename T2>
 inline std::ostream &operator<<(std::ostream &os, const std::pair<T1,T2> p) {
 	return os<<"{"<<p.ff<<", "<<p.ss<<"}";
@@ -70,8 +72,8 @@ public:
 
 signed main() {
 	sync();
-#ifdef LOCAL_DEFINE
-	cout<<"Time elapsed: "<<1.0 * clock()<<" clocks per sec";
+#ifndef LOCAL_DEFINE
+//	cout<<"Time elapsed: "<<1.0 * clock()<<" clocks per sec"<<nl;
 #endif
 	int t=1;
 	Solution ob;
@@ -85,28 +87,14 @@ signed main() {
 }
 
 void Solution::solve() {
-	int n,p,k;
-	cin>>n>>p>>k;
+	int a,b,c,d,e;
+	cin>>a>>b>>c>>d>>e;
+	cout<<a+b+c<<nl;	
+	int minimum = std::min(a,min(b,c));
+	cout<<minimum<<nl;
 
-	vector<vi> v(n);
-	for(int i =0 ; i < n; i++){
-		v[i%k].pb(i);
-	}
+	minimum<=e && a+b+c-minimum<=d?cout<<"yes"<<nl:cout<<"no"<<nl;
+	
 
-	//sort(v[p].begin(),v[p].end());
-	int count = 0; 
-	for(int i =0 ; i < p; i++){
-		count += v[i].size();
-		cout<<v[i].size()<<" ";
-	}
-	cout<<nl;
-	sort(v[p].begin(),v[p].end());
-	cout<<"count before p: "<<count<<nl;
-	for(auto i: v[p]){
-		count++;
-		if(i==p)
-			break;
-	}
-
-	cout<<count<<nl;
 }
+
