@@ -28,5 +28,9 @@ public class Stock{
 	public String toString(){
 		return symbol + "\n" + "Number of shares: " + total_shares;
 	}
+
+	public int getTotalShares(){
+		return total_shares;
+	}
 	
 }

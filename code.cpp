@@ -11,7 +11,7 @@
 using namespace std;
 
 #define fast            ios_base::sync_with_stdio(false);cin.tie(NULL);cout.tie(NULL);
-
+#define vi 				vector<int>
 #define int             long long int
 #define mod            (int) 10E9+7L
 #define pb              push_back
@@ -23,24 +23,9 @@ using namespace std;
 #define inf				1e18
 #define setbits(x)		__builtin_popcountll(x)
 #define zerobits(x)		__builtin_ctzll(x)
-
 template<typename T1,typename T2>
 inline std::ostream &operator<<(std::ostream &os, const std::pair<T1,T2> p) {
 	return os<<"{"<<p.ff<<", "<<p.ss<<"}";
-}
-
-template<typename T>
-int binarysearch(std::vector<T> arr, int start, int end, T key) {
-	int mid = (start + end)/2;
-	if(arr[mid]== key) {
-		return mid;
-	}
-	else if(key < arr[mid]) {
-		return binarysearch(arr,start,mid -1, key);
-	}
-	else
-		return binarysearch(arr,mid+1,end,key);
-
 }
 
 
@@ -78,9 +63,6 @@ inline std::ostream &operator<<(std::ostream &os,const std::vector<T> &v) {
 	return os<<"]";
 }
 
-bool sol(int, int , int);
-
-
 class Solution {
 public:
 	void solve();
@@ -93,9 +75,9 @@ signed main() {
 #endif
 	int t=1;
 	Solution ob;
-	// cin>>t;
+	cin>>t;
 	// cin.get();
-
+	// cout<<t<<nl;
 	while(t--)
 		ob.solve();
 
@@ -103,10 +85,28 @@ signed main() {
 }
 
 void Solution::solve() {
-	int n;
-	cin>>n;
-	multiset<int> s;
-	for(int i = 0; i < n; i++)
-	
-	
+	int n,p,k;
+	cin>>n>>p>>k;
+
+	vector<vi> v(n);
+	for(int i =0 ; i < n; i++){
+		v[i%k].pb(i);
+	}
+
+	//sort(v[p].begin(),v[p].end());
+	int count = 0; 
+	for(int i =0 ; i < p; i++){
+		count += v[i].size();
+		cout<<v[i].size()<<" ";
+	}
+	cout<<nl;
+	sort(v[p].begin(),v[p].end());
+	cout<<"count before p: "<<count<<nl;
+	for(auto i: v[p]){
+		count++;
+		if(i==p)
+			break;
+	}
+
+	cout<<count<<nl;
 }
