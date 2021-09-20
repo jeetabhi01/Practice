@@ -1,4 +1,4 @@
-//Pragma Optimisations
+//Pragma Optimisations 
 #pragma GCC optimise("Os")
 #pragma GCC optimise("O3")
 #pragma GCC optimise("unroll-loops")
@@ -30,6 +30,7 @@ inline std::ostream &operator<<(std::ostream &os, const std::pair<T1,T2> p) {
 	return os<<"{"<<p.ff<<", "<<p.ss<<"}";
 }
 
+template<typename T1,typename T2>
 
 int fastpow(int base, int n) {
 	int res = 1;
@@ -87,14 +88,6 @@ signed main() {
 }
 
 void Solution::solve() {
-	int a,b,c,d,e;
-	cin>>a>>b>>c>>d>>e;
-	cout<<a+b+c<<nl;	
-	int minimum = std::min(a,min(b,c));
-	cout<<minimum<<nl;
-
-	minimum<=e && a+b+c-minimum<=d?cout<<"yes"<<nl:cout<<"no"<<nl;
-	
+	int n;
 
 }
-
